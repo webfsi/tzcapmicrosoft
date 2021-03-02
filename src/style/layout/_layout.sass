@@ -1,0 +1,118 @@
+/* ----- Page structure ---------------- */
+.clear
+  clear: both
+
+.group:after 
+  content: "."
+  clear: both
+  display: block
+  height: 0
+  visibility: hidden
+
+#wrapper
+  min-width: 320px
+
+.section-st
+  padding: 20px 0
+  &_dark
+    background-color: #eee
+
+.container
+  padding-left: 15px
+  padding-right: 15px
+  width: auto
+
+.visible-lap, .hidden-full, .hidden-mobile
+  display: none
+
+
+/* Min width 768 pixels */
+@media only screen and (min-width: 768px)
+  .hidden-mobile
+    display: block
+    
+  .hidden-tabl
+    display: block
+  /* end media min width 768 pixels */
+
+/* Min width 860 pixels */
+@media only screen and (min-width: 860px)
+  .container
+    padding-left: 24px
+    padding-right: 24px
+    width: auto
+/* end media min width 860 pixels */
+
+
+/* Min width 1000 pixels */
+@media only screen and (min-width: 1000px)
+  html, body
+    height: 100%
+
+  body
+    display: flex
+    flex-direction: column
+
+  #wrapper
+    flex: 1 0 auto
+
+  .footer
+    flex-shrink: 0
+
+  .section-st
+    padding: 50px 0
+
+  .visible-lap
+    display: block
+
+  .hidden-lap
+    display: none
+  /* end media min width 1000 pixels */
+
+
+/* Min width 1200 pixels */
+@media only screen and (min-width: 1200px)
+  .section-st_lg
+    padding: 80px 0
+  .hidden-lap
+    display: block
+  
+  .container
+    padding-left: 5%
+    padding-right: 5%
+  /* end media min width 1200 pixels */
+
+/* Min width 1660 pixels */
+@media only screen and (min-width: 1660px)
+  
+  .container
+    max-width: 1660px
+    padding-left: 30px
+    padding-right: 30px
+    margin: 0 auto
+/* end media min width 1660 pixels */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

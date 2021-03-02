@@ -1,0 +1,265 @@
+/* ----- Navigation -------------------- */
+/* -- Bread crumbs ------------------ */
+.bread-crumbs
+  padding: 0
+  list-style-type: none
+  display: none
+
+  +tabl
+    display: block
+
+  li
+    display: inline-block
+    vertical-align: middle
+    margin: 0
+
+    &:before
+      content: '/'
+      margin: 0 5px
+
+    &:first-child
+      &:before
+        display: none
+
+
+/* -- Pagination -------------------- */
+.pagination
+  list-style-type: none
+
+  li
+    display: inline-block
+    vertical-align: middle
+    margin: 10px 5px
+
+  a
+    display: block
+    width: 30px
+    height: 30px
+    border-radius: 2px
+    background-color: $cl-gallery
+    line-height: 30px
+    text-align: center
+    text-decoration: none
+    &:hover
+      background-color: #fc8a00
+      color: #fff
+
+  &__prev,
+  &__next
+    a
+      width: auto
+      height: auto
+      border-radius: 0
+      background: none
+
+      &:hover
+        background: none
+        color: #000
+
+  &__active
+    a
+      background-color: #fc8a00
+      color: #fff
+
+
+/* -- Main menu --------------------- */
+.menu-open-wrapper-page
+  overflow: hidden
+  touch-action: none
+  -webkit-overflow-scrolling: none
+  overscroll-behavior: none
+
+.burger-menu
+  display: block
+  z-index: 101
+  cursor: pointer
+  padding: 18px 14px 17px
+
+.burger-menu-box
+  display: block
+  width: 20px
+  padding: 6px 0
+
+.burger-menu-inner
+  display: block
+  position: relative
+  height: 1px
+  background-color: $burger-fill
+  border-radius: 1px
+  transition: transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19)
+
+  &:before,
+  &:after
+    content: ' '
+    position: absolute
+    left: 0
+    height: 1px
+    background-color: $burger-fill
+    width: 100%
+    border-radius: 1px
+    transition-timing-function: ease
+    transition-duration: .15s
+    transition-property: transform
+
+  &:before
+    top: -6px
+    transition: top 75ms ease .12s, opacity 75ms ease
+
+  &:after
+    bottom: -6px
+    transition: bottom 75ms ease .12s, transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19)
+
+.menu-burger--opened
+  .burger-menu-inner
+    transition-delay: 0.12s
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+    transform: rotate(45deg)
+
+    &:before
+      top: 0
+      transition: top 75ms ease, opacity 75ms ease 0.12s
+      opacity: 0
+
+    &:after
+      bottom: 0
+      transition: bottom 75ms ease, transform 75ms cubic-bezier(0.215, 0.61, 0.355, 1) .12s
+      transform: rotate(-90deg)
+
+
+.menu-wrapper-fixed
+  position: fixed
+  top: 0
+  z-index: 100
+  height: 100%
+  width: 100%
+  left: -100%
+  transition: left 0.4s cubic-bezier(0.000, 0.995, 0.990, 1.000)
+
+.menu-open-wrapper
+  padding: 20px
+  height: 100%
+  overflow: auto
+  -webkit-overflow-scrolling: touch
+  transition: background 0.25s ease-out
+
+.menu-burger--opened
+  .menu-wrapper-fixed
+    left: 0
+
+  .menu-open-wrapper
+    background-color: $fill-menu
+
+  .menu-item
+    margin-left: 0
+    @for $i from 1 through 10
+      &:nth-child(#{$i})
+        transition-delay: (0.06s * $i) - 0.06s
+
+.header-nav
+  display: flex
+  flex-direction: column
+  justify-content: center
+  text-align: center
+  min-height: 100%
+
+.menu
+  margin: 0
+  padding: 0
+  list-style: none
+  display: flex
+  align-items: center
+
+  &__item
+    position: relative
+    padding: 0
+    list-style-type: none
+    color: #262626
+    transition: all 0.4s cubic-bezier(0.000, 0.995, 0.990, 1.000)
+
+  &__link
+    color: #262626
+    text-decoration: none
+    padding: 16px 30px 16px 12px
+    position: relative
+    white-space: nowrap
+    background: none
+    box-shadow: none
+    border: none
+    margin: 0
+    outline: none
+    font-size: 13px
+    line-height: 19px
+    cursor: pointer
+    display: block
+    &:focus
+      outline: 1px dashed #000
+
+    &:hover
+      color: #262626
+      &:before
+        display: block
+    &:before
+      background: currentColor
+      content: ""
+      height: 2px
+      position: absolute
+      display: none
+      bottom: 14px
+      width: calc(100% - 28px)
+      left: 11px
+    &_open-dd
+      &:before
+        width: calc(100% - 42px)
+
+  &__link_open-dd
+    position: relative
+    &:after
+      content: ""
+      position: absolute
+      top: 50%
+      right: 15px
+      margin-top: -3px
+      width: 8px
+      height: 8px
+      background: #fff url("data:image/svg+xml,%3Csvg id='Capa_1' enable-background='new 0 0 551.13 551.13' height='512' viewBox='0 0 551.13 551.13' width='512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m275.565 361.679-223.897-223.896h-51.668l275.565 275.565 275.565-275.565h-51.668z'/%3E%3C/svg%3E") center center no-repeat
+      background-size: 100% 100%
+
+.menu__item_open-tabl
+  display: none
+
+/* Min width 860 pixels */
+@media only screen and (min-width: 860px)
+  .menu__item_open-tabl
+    display: block
+  .menu__item_hidden-tabl
+    display: none
+/* end media min width 860 pixels */
+
+/* Min width 1000 pixels */
+@media only screen and (min-width: 1000px)
+  .menu__item_open-lap
+    display: block
+
+  .menu__link
+    padding-right: 20px
+    &_open-dd
+      &:before
+        width: calc(100% - 29px)
+  .menu__link_open-dd:after
+    right: 5px
+  .head-menu-cap__link
+    padding-right: 8px
+/* end media min width 1000 pixels */
+
+/* Min width 1200 pixels */
+@media only screen and (min-width: 1200px)
+  .menu__item_hidden-tabl
+    display: block
+  .menu__item_open-tabl
+    display: none
+/* end media min width 1200 pixels */
+
+
+/* ----- END Navigation ---------------- */
+/*                                       */
+/*                                       */
